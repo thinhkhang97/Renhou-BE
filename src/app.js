@@ -7,7 +7,7 @@ var database = require('./database');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var feeRouter = require('./routes/fee');
 var app = express();
 
 // view engine setup

@@ -9,12 +9,12 @@ var router = express.Router();
 // -Danh sách ID các đồ vật hư hỏng để tra giá trong database
 // OUTPUT: tiền tổng
 router.get('/fee', function(req, res, next) {
-  res.render('CACULATE FEE API');
+  res.send('CACULATE FEE API');
 });
 
 //Chưa rõ
 router.get('/feeDetail', function(req, res, next) {
-    res.render('DETAIL FEE API');
+    res.send('DETAIL FEE API');
   });
 
 module.exports = router;
