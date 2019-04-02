@@ -3,8 +3,7 @@ var mongoose = require('mongoose')
 const Schema = mongoose.Schema
  
 const RoomSchema = new Schema({
-    owner: Number,
-    id: Schema.Types.ObjectId,
+    houseId: Schema.Types.ObjectId,
     name: String,
     address: String,
     status:{
@@ -15,4 +14,4 @@ const RoomSchema = new Schema({
     membersIdNumber:[String],
 })
 
-module.exports = mongoose.model('room', RoomSchema)
+module.exports = mongoose.model('Room', RoomSchema)

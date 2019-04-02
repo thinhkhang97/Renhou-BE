@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var database = require('./database');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -31,13 +31,17 @@ app.use(function(req, res, next) {
 });
 
 //Init database
-new database().connect().then((db) => {
-  console.log("Connect to database succesfully");
-  var dbase = db.db("Renhou");
-  app.db = dbase;
-
-}).catch((err) => {
-  throw err;
+ 
+// make a connection
+mongoose.connect('mongodb://localhost:27017/Renhou');
+ 
+// get reference to database
+var db = mongoose.connection;
+ 
+db.on('error', console.error.bind(console, 'connection error:'));
+ 
+db.once('open', function() {
+    console.log("Connection Successful!");
 });
 
 // error handler
