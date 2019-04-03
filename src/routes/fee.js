@@ -18,18 +18,18 @@ const MONEY_WATER = 16000;
 // OUTPUT: tiền tổng
 router.get('/fee', function(req, res, next) {
 
-    // var currentMonth = req.body.currentMonth;
-    // var currentYear = req.body.currentYear;
-    // var electricNo = req.body.electricNo;
-    // var waterNo = req.body.waterNo;
-    // var idRoom = req.body.idRoom;
-    // var listItem = [];
-    var currentMonth = 3;
-    var currentYear = "2019";
-    var electricNo = 135;
-    var waterNo = 10;
-    var idRoom = "P01";
-    var listItem = ['MAY_LANH','CUA_SO'];
+    var currentMonth = req.body.currentMonth;
+    var currentYear = req.body.currentYear;
+    var electricNo = req.body.electricNo;
+    var waterNo = req.body.waterNo;
+    var idRoom = req.body.idRoom;
+    var listItem = req.body.listItem;
+    // var currentMonth = 3;
+    // var currentYear = "2019";
+    // var electricNo = 135;
+    // var waterNo = 10;
+    // var idRoom = "P01";
+    // var listItem = ['MAY_LANH','CUA_SO'];
 
     var totalElectric, totalWater, totalItemMoney;
     var totalMoney = 0;
@@ -57,7 +57,23 @@ router.get('/fee', function(req, res, next) {
                 totalMoney = totalElectric*MONEY_ELECTRIC + totalWater*MONEY_WATER + totalItemMoney;
                 console.log(totalMoney);
 
-                res.send(totalMoney.toString());
+                const totalBill = new totalBillModel({
+                   idRoom: idRoom,
+                   month: currentMonth,
+                   year: currentYear,
+                    totalElectric: totalElectric,
+                    totalWater: totalWater,
+                    itemMoney: totalItemMoney,
+                    totalMoney: totalMoney
+                });
+                
+                totalBill.save(function(err){
+                    if(err) console.log(err);
+                    
+                    res.send(totalBill);
+                });
+
+                // res.send(totalMoney.toString());
             });
         });
     });

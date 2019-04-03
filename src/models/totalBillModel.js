@@ -29,7 +29,7 @@ const totalBillSchema = new Schema ({
     totalMoney: {
         type: Number,
     }
-});
+},{collection: 'Total_Bill'});
 
 const totalBillModel = mongoose.model('Total_Bill',totalBillSchema);
 
