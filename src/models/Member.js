@@ -6,6 +6,8 @@ const MemberSchema = new Schema({
   name: String,
   idCard: String,
   phone: String,
+  dob: Date,
+  address: String,
   email: String,
   delFlag: Boolean
 }, {
