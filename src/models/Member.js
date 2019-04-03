@@ -15,4 +15,4 @@ const MemberSchema = new Schema({
     }
 })
  
-module.exports = mongoose.model('members', MemberSchema)
+module.exports = mongoose.model('Member', MemberSchema)
