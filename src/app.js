@@ -7,7 +7,9 @@ var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var roomRouter = require('./routes/room')
+var roomRouter = require('./routes/room');
+var feeRouter = require('./routes/fee');
+
 var app = express();
 
 // view engine setup
@@ -23,6 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/room', roomRouter);
+app.use('/fee', feeRouter);
+
 
 
 // catch 404 and forward to error handler

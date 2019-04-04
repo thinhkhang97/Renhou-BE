@@ -1,27 +1,43 @@
 var express = require('express');
 var router = express.Router();
 var Room = require('../models/Room');
+var Rule = require('../models/FeeRule');
 
-//Add a new room
+
+//Add a new room with fee rule
 router.post('/',(req, res) => {
   const room = new Room(req.params);
-  room.save((e,data)=>{
+  room.save((e,newRoom)=>{
     if(e)
       res.status(500).send({
           messase: 'error',
           data: e
       })
     else
-      res.send({
-          message: 'Created new room successfully!',
-          data: data
+    {
+      const rule = new Rule(req.params);
+      rule.save((e1,newRule)=>{
+        if(e1)
+          res.status(500).send({
+              messase: 'error',
+              data: e1
+          })
+        else
+          res.send({
+            message: 'Created new room successfully!',
+            data: {
+              room: newRoom,
+              rule: newRule
+            }
+          })
       })
+    }
   })
 })
 
 //Find all room of an owner base on owner _id
 router.get('/all', (req, res) => {
-  Room.find({owner: req.query.owner}).exec((e,data)=>{
+  Room.find({ownerId: req.query.owner}).exec((e,data)=>{
     if(e)
       res.status(500).send({
           messase: 'error',
