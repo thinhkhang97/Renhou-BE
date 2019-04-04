@@ -7,11 +7,16 @@ var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+<<<<<<< HEAD
 
 var feeRouter = require('./routes/fee');
 var membersRouter = require('./routes/members');
 var roomRouter = require('./routes/room')
 
+=======
+var roomRouter = require('./routes/room');
+var feeRouter = require('./routes/fee');
+>>>>>>> origin/son
 var app = express();
 
 // view engine setup
@@ -28,8 +33,12 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/member', membersRouter);
 app.use('/room', roomRouter);
+<<<<<<< HEAD
 app.use('/fee', feeRouter);
 
+=======
+app.use('/fee',feeRouter);
+>>>>>>> origin/son
 
 
 // catch 404 and forward to error handler
@@ -39,8 +48,13 @@ app.use(function(req, res, next) {
 
 //Init database
 // make a connection
+<<<<<<< HEAD
 mongoose.connect('mongodb://localhost:27017/Renhou');
 
+=======
+mongoose.connect('mongodb://default:manager1@ds159164.mlab.com:59164/renhou');
+ 
+>>>>>>> origin/son
 // get reference to database
 var db = mongoose.connection;
 
