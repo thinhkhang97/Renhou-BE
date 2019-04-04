@@ -7,8 +7,10 @@ var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var roomRouter = require('./routes/room');
+
 var feeRouter = require('./routes/fee');
+var membersRouter = require('./routes/members');
+var roomRouter = require('./routes/room')
 
 var app = express();
 
@@ -24,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/member', membersRouter);
 app.use('/room', roomRouter);
 app.use('/fee', feeRouter);
 
@@ -35,15 +38,14 @@ app.use(function(req, res, next) {
 });
 
 //Init database
- 
 // make a connection
 mongoose.connect('mongodb://localhost:27017/Renhou');
- 
+
 // get reference to database
 var db = mongoose.connection;
- 
+
 db.on('error', console.error.bind(console, 'connection error:'));
- 
+
 db.once('open', function() {
     console.log("Connection Successful!");
 });

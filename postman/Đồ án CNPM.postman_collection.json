@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "01ba84cd-04cb-4459-b9a9-e28356aafcb1",
+		"name": "Đồ án CNPM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "member",
+			"description": "",
+			"item": [
+				{
+					"name": "add a member",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Chung 1\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/member/create/5ca46e2a2c76681518568bc3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"member",
+								"create",
+								"5ca46e2a2c76681518568bc3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update a member",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Chung 2\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/member/update/5ca46e712c76681518568bc4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"member",
+								"update",
+								"5ca46e712c76681518568bc4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get a member",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:3000/member/get/5ca46e712c76681518568bc4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"member",
+								"get",
+								"5ca46e712c76681518568bc4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all member",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:3000/member/get/all",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"member",
+								"get",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete member",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:3000/member/delete/5ca46e712c76681518568bc4",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"member",
+								"delete",
+								"5ca46e712c76681518568bc4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "room",
+			"description": "",
+			"item": [
+				{
+					"name": "add new room",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Room 1\",\n\t\"address\":\"Tân phú\",\n\t\"membersIdNumber\":[]\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/room",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get the members in a room",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"listMembersId\":[\"5ca46e712c76681518568bc4\", \"5ca45f45d21dea37d86919cb\"]\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/member/room/get",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"member",
+								"room",
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all room",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:3000/room/all",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find room by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "localhost:3000/room/5ca46e2a2c76681518568bc3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"room",
+								"5ca46e2a2c76681518568bc3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

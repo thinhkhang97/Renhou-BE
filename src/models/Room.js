@@ -3,7 +3,7 @@ var mongoose = require('mongoose')
 const Schema = mongoose.Schema
  
 const RoomSchema = new Schema({
-    ownerId: Schema.Types.ObjectId,
+    userId: Schema.Types.ObjectId,
     name: String,
     address: String,
     status:{
@@ -11,6 +11,8 @@ const RoomSchema = new Schema({
         default:`empty`,
     },
     membersIdNumber:[String],
+    billsIdNumber:[String],
+    furnituresIdNumber:[String]
 })
 
 module.exports = mongoose.model('Room', RoomSchema)

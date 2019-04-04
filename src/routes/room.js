@@ -37,7 +37,7 @@ router.post('/',(req, res) => {
 
 //Find all room of an owner base on owner _id
 router.get('/all', (req, res) => {
-  Room.find({ownerId: req.query.owner}).exec((e,data)=>{
+  Room.find({userId: req.query.owner}).exec((e,data)=>{
     if(e)
       res.status(500).send({
           messase: 'error',
@@ -51,8 +51,8 @@ router.get('/all', (req, res) => {
 })
 
 //Find a room base on _id 
-router.get('/', (req, res) => {
-  Room.findOne({_id: req.query.id}).exec((e,data)=>{
+router.get('/:id', (req, res) => {
+  Room.findOne({_id: req.params.id}).exec((e,data)=>{
     if(e)
       res.status(500).send({
           messase: 'error',
@@ -66,18 +66,18 @@ router.get('/', (req, res) => {
 })
 
 //Find a room base on address and name 
-router.get('/', (req, res) => {
-  Room.findOne({name: req.query.name,address:req.query.address}).exec((e,data)=>{
-    if(e)
-      res.status(500).send({
-          messase: 'error',
-          data: e
-      })
-    else
-      res.send({
-          data: data
-      })
-  }) 
-})
+// router.get('/', (req, res) => {
+//   Room.findOne({name: req.query.name,address:req.query.address}).exec((e,data)=>{
+//     if(e)
+//       res.status(500).send({
+//           messase: 'error',
+//           data: e
+//       })
+//     else
+//       res.send({
+//           data: data
+//       })
+//   }) 
+// })
 
 module.exports = router;
