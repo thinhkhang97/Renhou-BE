@@ -6,15 +6,15 @@ const itemHouseSchema = new Schema({
 
     idRoom: {
         type: String,
-        require: false
+        required: false
     },
     idItem: {
         type: String,
-        require: false,
+        required: false,
     },
     nameItem: {
         type: String,
-        require: false
+        required: false
     },
     money: {
         type: Number,

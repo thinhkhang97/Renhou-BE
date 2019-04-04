@@ -3,9 +3,9 @@ var mongoose = require('mongoose')
 const Schema = mongoose.Schema
  
 const RoomSchema = new Schema({
-    userId: Schema.Types.ObjectId,
-    name: String,
-    address: String,
+    userId: {type: Schema.Types.ObjectId, required: true},
+    name: {type: String, required: true},
+    address: {type: String, required: true},
     status:{
         type:String,
         default:`empty`,

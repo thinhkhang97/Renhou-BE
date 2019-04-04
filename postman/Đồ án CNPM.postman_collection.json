@@ -1,238 +1,332 @@
 {
-	"info": {
-		"_postman_id": "01ba84cd-04cb-4459-b9a9-e28356aafcb1",
-		"name": "Đồ án CNPM",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
+	"id": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+	"name": "Đồ án CNPM",
+	"description": "",
+	"order": [],
+	"folders": [
 		{
+			"id": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
 			"name": "member",
 			"description": "",
-			"item": [
-				{
-					"name": "add a member",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\":\"Chung 1\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}"
-						},
-						"url": {
-							"raw": "localhost:3000/member/create/5ca46e2a2c76681518568bc3",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"member",
-								"create",
-								"5ca46e2a2c76681518568bc3"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update a member",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\":\"Chung 2\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}"
-						},
-						"url": {
-							"raw": "localhost:3000/member/update/5ca46e712c76681518568bc4",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"member",
-								"update",
-								"5ca46e712c76681518568bc4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get a member",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "localhost:3000/member/get/5ca46e712c76681518568bc4",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"member",
-								"get",
-								"5ca46e712c76681518568bc4"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get all member",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "localhost:3000/member/get/all",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"member",
-								"get",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "delete member",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "localhost:3000/member/delete/5ca46e712c76681518568bc4",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"member",
-								"delete",
-								"5ca46e712c76681518568bc4"
-							]
-						}
-					},
-					"response": []
-				}
-			]
+			"order": [
+				"ca3641d4-0c82-21be-9476-3cbbc6e8fdd9",
+				"5ee3b65a-aa6d-2e39-f0c3-d30b0ac6e551",
+				"ad25fd92-a3ae-67a6-6e73-7c03158fc568",
+				"19562b80-7742-7a33-000a-db5d93c15c32",
+				"5726c221-4f1e-158a-dc3f-61feff3b0a19"
+			],
+			"folders_order": [],
+			"owner": "1480489",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1"
 		},
 		{
+			"id": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
 			"name": "room",
 			"description": "",
-			"item": [
+			"order": [
+				"411401ca-3a97-ca64-d183-fae38d8654f3",
+				"60799965-082d-986f-fa0d-7455d447f305",
+				"09648b64-a470-6df2-c45b-c36069a358f0",
+				"4f4f6113-9d33-96a7-76dd-8e82d5b369ec",
+				"7a0dd628-4fe8-9142-4a66-2883db2fd8f6",
+				"5f2f1818-fa16-1d86-63a7-128b3b3ef7cf"
+			],
+			"folders_order": [],
+			"owner": "1480489",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1"
+		}
+	],
+	"folders_order": [
+		"a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
+		"8ffea3ae-cdca-082a-7ea3-d51f3011a22b"
+	],
+	"timestamp": 0,
+	"owner": "1480489",
+	"public": false,
+	"requests": [
+		{
+			"id": "09648b64-a470-6df2-c45b-c36069a358f0",
+			"headers": "owner: 5ca46e712c76681518568bc4\n",
+			"headerData": [
 				{
-					"name": "add new room",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\":\"Room 1\",\n\t\"address\":\"Tân phú\",\n\t\"membersIdNumber\":[]\n}"
-						},
-						"url": {
-							"raw": "localhost:3000/room",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"room"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get the members in a room",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"listMembersId\":[\"5ca46e712c76681518568bc4\", \"5ca45f45d21dea37d86919cb\"]\n}"
-						},
-						"url": {
-							"raw": "localhost:3000/member/room/get",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"member",
-								"room",
-								"get"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get all room",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "localhost:3000/room/all",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"room",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "find room by id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {},
-						"url": {
-							"raw": "localhost:3000/room/5ca46e2a2c76681518568bc3",
-							"host": [
-								"localhost"
-							],
-							"port": "3000",
-							"path": [
-								"room",
-								"5ca46e2a2c76681518568bc3"
-							]
-						}
-					},
-					"response": []
+					"key": "owner",
+					"value": "5ca46e712c76681518568bc4",
+					"description": "",
+					"enabled": true
 				}
-			]
+			],
+			"url": "localhost:3000/room/all/5ca46e712c76681518568bc4",
+			"folder": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1554392924619,
+			"name": "get all room",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": []
+		},
+		{
+			"id": "19562b80-7742-7a33-000a-db5d93c15c32",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:3000/member/get/all/5ca46e712c76681518568bc4",
+			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1554397310106,
+			"name": "get all member",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": []
+		},
+		{
+			"id": "411401ca-3a97-ca64-d183-fae38d8654f3",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/room",
+			"folder": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1554395853580,
+			"name": "add new room",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": [],
+			"rawModeData": "{\n\t\"userId\":\"5ca46e712c76681518568bc4\",\n\t\"name\":\"Room 1\",\n\t\"address\":\"Tân phú\",\n\t\"membersIdNumber\":[],\n\t\"roomCost\":\"1000000\",\n    \"perElectricCost\":\"4000\",\n    \"perWaterCost\":\"10000\"\n}"
+		},
+		{
+			"id": "4f4f6113-9d33-96a7-76dd-8e82d5b369ec",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:3000/room/5ca634cfe2001633446546ee",
+			"folder": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1554397313306,
+			"name": "find room by id",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": []
+		},
+		{
+			"id": "5726c221-4f1e-158a-dc3f-61feff3b0a19",
+			"name": "delete member",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"method": "DELETE",
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "localhost:3000/member/delete/5ca46e712c76681518568bc4",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2"
+		},
+		{
+			"id": "5ee3b65a-aa6d-2e39-f0c3-d30b0ac6e551",
+			"name": "update a member",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"method": "PUT",
+			"headers": "Content-Type: application/json",
+			"dataMode": "raw",
+			"data": [],
+			"rawModeData": "{\n\t\"name\":\"Chung 2\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}",
+			"url": "localhost:3000/member/update/5ca46e712c76681518568bc4",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"collection_id": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2"
+		},
+		{
+			"id": "5f2f1818-fa16-1d86-63a7-128b3b3ef7cf",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "",
+					"value": "",
+					"description": "",
+					"enabled": false
+				}
+			],
+			"url": "localhost:3000/room/feecost",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1554397317523,
+			"name": "configurate fee cost",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": [],
+			"rawModeData": "{\n\t\"roomId\":\"5ca634cfe2001633446546ee\",\n\t\"roomCost\":\"500000\",\n    \"perElectricCost\":\"3000\",\n    \"perWaterCost\":\"15000\"\n}"
+		},
+		{
+			"id": "60799965-082d-986f-fa0d-7455d447f305",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/member/room/get",
+			"folder": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1554397313826,
+			"name": "get the members in a room",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": [],
+			"rawModeData": "{\n\t\"listMembersId\":[\"5ca63726163b6f05e043af2a\", \"5ca45f45d21dea37d86919cb\"]\n}"
+		},
+		{
+			"id": "7a0dd628-4fe8-9142-4a66-2883db2fd8f6",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/room/members",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1554396543045,
+			"name": "configure member list in a room",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": [],
+			"rawModeData": "{\n\t\"roomId\":\"5ca63423f3a2ca1a786ac336\",\n\t\"listMember\":[\n\t\t\"5ca634f2e2001633446546f0\",\n        \"5ca634f7e2001633446546f1\"]\n}"
+		},
+		{
+			"id": "ad25fd92-a3ae-67a6-6e73-7c03158fc568",
+			"name": "get a member",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"method": "GET",
+			"headers": "",
+			"data": [],
+			"rawModeData": "",
+			"url": "localhost:3000/member/get/5ca46e712c76681518568bc4",
+			"responses": [],
+			"pathVariableData": [],
+			"queryParams": [],
+			"headerData": [],
+			"collection_id": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2"
+		},
+		{
+			"id": "ca3641d4-0c82-21be-9476-3cbbc6e8fdd9",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/member/create/5ca6370d163b6f05e043af28",
+			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1554397315727,
+			"name": "add a member",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": [],
+			"rawModeData": "{\n\t\"name\":\"Chung 1\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}"
 		}
 	]
 }

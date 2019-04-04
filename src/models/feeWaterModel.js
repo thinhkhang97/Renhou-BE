@@ -5,19 +5,19 @@ const Schema = mongoose.Schema;
 const feeWaterSchema = new Schema({
     idRoom: {
         type: String,
-        require: false
+        required: false
     },
     year: {
         type: String,
-        require: false
+        required: false
     },
     month: {
         type: String,
-        require: false
+        required: false
     },
     waterNo: {
         type: String,
-        require: false
+        required: false
     }
 },{collection: 'Fee_Water'});
 

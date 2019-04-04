@@ -6,7 +6,7 @@ var Rule = require('../models/FeeRule');
 
 //Add a new room with fee rule
 router.post('/',(req, res) => {
-  const room = new Room(req.params);
+  const room = new Room(req.body);
   room.save((e,newRoom)=>{
     if(e)
       res.status(500).send({
@@ -15,7 +15,8 @@ router.post('/',(req, res) => {
       })
     else
     {
-      const rule = new Rule(req.params);
+      req.body.roomId = newRoom._id;
+      const rule = new Rule((req.body));
       rule.save((e1,newRule)=>{
         if(e1)
           res.status(500).send({
@@ -35,9 +36,41 @@ router.post('/',(req, res) => {
   })
 })
 
+
+//Configurate list member
+router.put('/members',(req, res) => {
+  Room.findOneAndUpdate({_id:req.body.roomId},{membersIdNumber:req.body.listMember}).exec((e,data)=>{
+    if(e)
+      res.status(500).send({
+          messase: 'error',
+          data: e
+      })
+    else
+      res.send({
+          messase: 'configurate success',
+      })
+  }) 
+})
+
+//Configurate fee cost
+router.put('/feecost',(req, res) => {
+  console.log(req.body)
+  Rule.findOneAndUpdate({roomId:req.body.roomId},req.body).exec((e,data)=>{
+    if(e)
+      res.status(500).send({
+          messase: 'error',
+          data: e
+      })
+    else
+      res.send({
+          messase: 'configurate success',
+      })
+  }) 
+})
+
 //Find all room of an owner base on owner _id
-router.get('/all', (req, res) => {
-  Room.find({userId: req.query.owner}).exec((e,data)=>{
+router.get('/all/:userid', (req, res) => {
+  Room.find({userId: req.params.userid}).exec((e,data)=>{
     if(e)
       res.status(500).send({
           messase: 'error',
@@ -59,9 +92,20 @@ router.get('/:id', (req, res) => {
           data: e
       })
     else
-      res.send({
-          data: data
-      })
+      Rule.findOne({roomId: req.params.id}).exec((e2,extradata)=>{
+        if(e2)
+          res.status(500).send({
+              messase: 'error',
+              data: e2
+          })
+        else
+          res.send({
+              data: {
+                room: data,
+                rule: extradata
+              }
+          })
+      }) 
   }) 
 })
 

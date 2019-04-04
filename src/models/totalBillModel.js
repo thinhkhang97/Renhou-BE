@@ -6,15 +6,15 @@ const totalBillSchema = new Schema ({
 
     idRoom: {
         type: String,
-        require: false
+        required: false
     },
     year: {
         type: String,
-        require: false
+        required: false
     },
     month: {
         type: String,
-        require: false
+        required: false
     },
     totalElectric: {
         type: Number,

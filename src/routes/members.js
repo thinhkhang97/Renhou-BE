@@ -10,14 +10,14 @@ router.post(
   '/create/:idRoom',
   async (req, res) => {
     try {
-
+      const room = (await RoomModel.findById(req.params.idRoom));
+      req.body.userId = room.userId;
       const memberDoc = new MemberModel(req.body);
       const member = await memberDoc.save();
       //add user to the room
-      const listUserInRoom = (await RoomModel.findById(req.params.idRoom)).membersIdNumber;
+      const listUserInRoom = room.membersIdNumber;
       listUserInRoom.push(member._id);
-      await RoomModel.findOneAndUpdate( req.params.idRoom, {membersIdNumber: listUserInRoom});
-
+      await RoomModel.findOneAndUpdate( req.params.idRoom, {membersIdNumber: listUserInRoom,status:'used'});
       return res.send({
         message: 'Created new member successfully!',
         data: member
@@ -44,10 +44,10 @@ router.put(
 
 //get all members
 router.get(
-  '/get/all',
+  '/get/all/:userid',
   async (req, res) => {
     try {
-      await MemberModel.find({delFlag : false}, function(err, member){
+      await MemberModel.find({userId: req.params.userid, delFlag : false}, function(err, member){
         if(err){
           return res.status(404).send({ message: 'Not found!' })
         }
