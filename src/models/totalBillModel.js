@@ -16,14 +16,20 @@ const totalBillSchema = new Schema ({
         type: String,
         require: false
     },
-    totalElectric: {
+    electricNo: {
         type: Number,
     },
-    totalWater: {
+    waterNo: {
+        type: Number,
+    },
+    totalMoneyElectric:{
+        type: Number,
+    },
+    totalMoneyWater: {
         type: Number,
     },
     // Tổng tiền vật dụng hư trong nhà
-    itemMoney: {
+    itemMoneyItem: {
         type: Number,
     },
     totalMoney: {
