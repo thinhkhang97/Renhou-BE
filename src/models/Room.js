@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
  
 const RoomSchema = new Schema({
     userId: {type: Schema.Types.ObjectId, required: true},
-    name: {type: String, required: true},
+    name: {type: String, required: true, unique:true},
     address: {type: String, required: true},
     status:{
         type:String,
