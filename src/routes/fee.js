@@ -4,6 +4,8 @@ var router = express.Router();
 const totalBillModel = require('../models/totalBillModel');
 const itemHouseModel = require('../models/itemHouseModel');
 const unitPriceModel = require('../models/unitPriceModel');
+const roomCostModel = require('../models/roomCost');
+const feeDetailModel = require('../models/feeDetailModel');
 
 const MONEY_ELECTRIC = 3000;
 const MONEY_WATER = 16000;
@@ -96,9 +98,56 @@ router.get('/fee', function(req, res, next) {
     });
 });
 
+router.get('/showFeeList',function(req,res,next){
+    // var idRoom = req.body.idRoom;
+    var idRoom = "P01";
+    totalBillModel.find({idRoom: idRoom}).exec(function(err,totalBillList){
+        res.send(totalBillList);
+    })
+});
+
 //Hóa đơn tiền điện
-router.get('/feeElectric', function (req, res, next) {
-    res.send('DETAIL FEE API');
-  });
+router.get('/feeDetail', function (req, res, next) {
+
+    var idRoom = req.body.idRoom;
+    var month = req.body.month;
+    var year = req.body.year;
+    // var idRoom = "P01";
+    // var month = 3;
+    // var year = "2019";
+    var beforeMonth;
+    if(1 == month){
+        beforeMonth = 12;
+    }else{
+        beforeMonth = month - 1;
+    }
+    totalBillModel.findOne({idRoom: idRoom,month: month.toString(),year: year}).exec(function(err,feeDetailCurrent){
+
+        totalBillModel.findOne({idRoom : idRoom,month:beforeMonth.toString(),year:year}).exec(function(err,feeDetailBefore){
+
+            roomCostModel.findOne({idRoom: idRoom}).exec(function(err,roomCost){
+                var electricOldNo = feeDetailCurrent.electricNo;
+                console.log(electricOldNo);
+                const feeDetail = {
+                    "idRoom" : idRoom,
+                    "time" : month + "/" + year,
+                    "electricOldNo" : electricOldNo,
+                    "electricNewNo" : feeDetailCurrent.electricNo,
+                    "electricCost" : roomCost.electricCost,
+                    "totalMoneyElectric" : feeDetailCurrent.totalMoneyElectric,
+                    "waterOldNo" : feeDetailBefore.waterNo,
+                    "waterNewNo" : feeDetailCurrent.waterNo,
+                    "waterCost" : roomCost.waterCost,
+                    "totalMoneyWater" : feeDetailCurrent.totalMoneyWater,
+                    "roomCost" : roomCost.roomCost,
+                    "totalMoneyItem" : feeDetailCurrent.itemMoneyItem,
+                    "totalMoney" : feeDetailCurrent.totalMoney,
+                    "status" : feeDetailCurrent.status
+                };
+                res.send(feeDetail);
+            })
+        })
+    })
+});
 
 module.exports = router;

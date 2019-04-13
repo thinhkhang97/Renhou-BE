@@ -34,6 +34,9 @@ const totalBillSchema = new Schema ({
     },
     totalMoney: {
         type: Number,
+    },
+    status: {
+        type: Number
     }
 },{collection: 'Total_Bill'});
 
