@@ -4,15 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-
+var session = require('express-session')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var feeRouter = require('./routes/fee');
 var membersRouter = require('./routes/members');
 var roomRouter = require('./routes/room')
-
-
 var app = express();
 
 // view engine setup
@@ -24,13 +22,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//use sessions for tracking logins
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: true
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/member', membersRouter);
 app.use('/room', roomRouter);
 app.use('/fee', feeRouter);
-
 
 
 // catch 404 and forward to error handler
