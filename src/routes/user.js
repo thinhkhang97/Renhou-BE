@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
 var passport = require('passport')
+var fs = require('fs');
 var smtpTransport  = require('../services/email')
 var validator = require("email-validator");
 const bcrypt = require('bcrypt-nodejs');
@@ -45,29 +46,18 @@ router.get('/verify/:sign',function(req, res){
 
 //Sign in
 router.post('/signin', function(req, res,next) {
-	let users;
-	User.findOne({email: req.body.email}).exec((err,found) => {
-		users = found;
-		if (!found.isActive) {
-			return res.status(401).json({ message: "Account not verified " });
+	passport.authenticate('local', (err, token, msg) => {
+		if (err || !token) {
+			return res.status(400).json(
+				msg,
+			);
 		}
-		else if(err)
-		{
-			return res.status(400).json({ message: "Email is wrong" });
-		}})
-		passport.authenticate('local', (err, token) => {
-			if (err || !token) {
-				return res.status(400).json({
-					message: 'Email or Password is wrong',
-				});
-			}
-			return res.status(200).json({
-				message: "Login successful",
-				token: token,
-				id: users.id,
-				email: users.email
-			});
-		})((req, res, next))
+		return res.status(200).json({
+			message: "Login successful",
+			token
+		});
+	})(req, res, next)
+		
 });
 
 //Sign up

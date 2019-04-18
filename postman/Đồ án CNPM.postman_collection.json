@@ -34,11 +34,24 @@
 			"folders_order": [],
 			"owner": "1480489",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1"
+		},
+		{
+			"name": "user",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"order": [
+				"e86564bf-1814-6708-85ca-1617fbb1fb18",
+				"c2f783ce-0da3-86c5-40d0-3d6d85deb9e4"
+			],
+			"owner": "1480489",
+			"folders_order": [],
+			"id": "61d7a283-de32-2f98-0e18-80eb3f37b26b"
 		}
 	],
 	"folders_order": [
 		"a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
-		"8ffea3ae-cdca-082a-7ea3-d51f3011a22b"
+		"8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
+		"61d7a283-de32-2f98-0e18-80eb3f37b26b"
 	],
 	"timestamp": 0,
 	"owner": "1480489",
@@ -205,6 +218,7 @@
 				}
 			],
 			"url": "localhost:3000/room/feecost",
+			"folder": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -264,6 +278,7 @@
 				}
 			],
 			"url": "localhost:3000/room/members",
+			"folder": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -299,6 +314,35 @@
 			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2"
 		},
 		{
+			"id": "c2f783ce-0da3-86c5-40d0-3d6d85deb9e4",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/user/signin",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1555571811167,
+			"name": "localhost:3000/user/signin",
+			"description": "sign in",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": [],
+			"rawModeData": "{\n\t\"email\":\"tienandehit1@gmail.com\",\n\t\"password\":\"123456\"\n}"
+		},
+		{
 			"id": "ca3641d4-0c82-21be-9476-3cbbc6e8fdd9",
 			"headers": "Content-Type: application/json\n",
 			"headerData": [
@@ -327,6 +371,36 @@
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
 			"responses": [],
 			"rawModeData": "{\n\t\"name\":\"Chung 1\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}"
+		},
+		{
+			"id": "e86564bf-1814-6708-85ca-1617fbb1fb18",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/user/signup",
+			"folder": "61d7a283-de32-2f98-0e18-80eb3f37b26b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1555562059086,
+			"name": "localhost:3000/user/signup",
+			"description": "sign up",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": [],
+			"rawModeData": "{\n\t\"email\":\"tienandehit1@gmail.com\",\n\t\"password\":\"123456\"\n}"
 		}
 	]
 }
