@@ -2,11 +2,11 @@
 Renhou-BE is backend of Renhou mobile application.
 This is a update.
 
-#API LOGIN
-- Sau khi login th�nh c�ng s? tr? v? userID v� token.
-- Token n�y d�ng ?? truy?n v�o header c?a request d??i d?ng
-	Authorization: Bearer token.
-  N?u kh�ng c� token, g?i API s? tr? v? unauthorize
+# API LOGIN
+- Sau khi login thành công sẽ trả về userID và token.
+- Token này dùng ?? truyền vào header của request dưới dạng 
+> Authorization: Bearer token.
+- Nếu không có token, gọi API sẽ nhận được "Unauthorize"
 
 # Test use Postman
 ## B1: Chạy postman
