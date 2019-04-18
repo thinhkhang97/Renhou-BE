@@ -25,7 +25,7 @@ app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/user',passport.authenticate('jwt', {session: false}), userRouter);
+app.use('/user', userRouter);
 app.use('/member',passport.authenticate('jwt', {session: false}), membersRouter);
 app.use('/room',passport.authenticate('jwt', {session: false}), roomRouter);
 app.use('/fee',passport.authenticate('jwt', {session: false}), feeRouter);
