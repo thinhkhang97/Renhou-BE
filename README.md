@@ -6,7 +6,7 @@ This is a update.
 - Sau khi login thành công sẽ trả về userID và token.
 - Token này dùng ?? truyền vào header của request dưới dạng 
 > Authorization: Bearer token.
-  Nếu không có token, gọi API sẽ nhận được "Unauthorize"
+- Nếu không có token, gọi API sẽ nhận được "Unauthorize"
 
 
 # Test use Postman
