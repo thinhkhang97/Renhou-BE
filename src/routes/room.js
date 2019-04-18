@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Room = require('../models/Room');
 var Rule = require('../models/FeeRule');
-
+var passport = require('passport');
 
 //Add a new room with fee rule
 router.post('/',(req, res) => {

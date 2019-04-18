@@ -38,4 +38,17 @@ module.exports = (passport)=>{
           })
         }
       ));
+
+    passport.use(new JWTStrategy({
+        jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+        secretOrKey   : 'thisisascret'
+      },
+      function (jwtPayload, cb) {
+        User.findOne({email:jwtPayload.data}).exec((err,user) => {
+          if(err)   
+            return cb(err);
+          return cb(null, user);
+        })
+      }
+      )); 
 }
