@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
-var passport = require('../services/passport')
+var passport = require('passport')
 var smtpTransport  = require('../services/email')
-var fs = require('fs');
+var validator = require("email-validator");
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('jsonwebtoken');
 
@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken');
 sendVerificationEmail = (verificationMail, req, res) => {
 	link = "http://" + req.get('host') + "/user/verify/" + verificationMail.id;
 	mailOptions = {
-		from: '@gmail.com',
+		from: 'rent.house.server@gmail.com',
 		to: verificationMail.email,
 		subject: "Please confirm your Email account",
 		html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
@@ -28,7 +28,7 @@ sendVerificationEmail = (verificationMail, req, res) => {
 };
 
 //Verify signup
-router.get('/verify/:sign',function(req, res, next){
+router.get('/verify/:sign',function(req, res){
 	try {
 		const ids = jwt.verify(req.params.sign, 'thisisascret');
 		var email = ids.data;
@@ -44,38 +44,59 @@ router.get('/verify/:sign',function(req, res, next){
 
 
 //Sign in
-//Cái này express có hỗ trợ session cho đăng nhập hay không ???
-//Nếu có thì xài còn không thì phải tự tạo session cho người đăng nhập
-router.get('/signin', function(req, res, next) {
-  res.send('API SIGN IN');
+router.post('/signin', function(req, res,next) {
+	let users;
+	User.findOne({email: req.body.email}).exec((err,found) => {
+		users = found;
+		if (!found.isActive) {
+			return res.status(401).json({ message: "Account not verified " });
+		}
+		else if(err)
+		{
+			return res.status(400).json({ message: "Email is wrong" });
+		}})
+		passport.authenticate('local', (err, token) => {
+			if (err || !token) {
+				return res.status(400).json({
+					message: 'Email or Password is wrong',
+				});
+			}
+			return res.status(200).json({
+				message: "Login successful",
+				token: token,
+				id: users.id,
+				email: users.email
+			});
+		})((req, res, next))
 });
 
 //Sign up
-router.get('/signup', function(req, res, next) {
-  if (validator.validate(req.body.email)) {
-    var salt = bcrypt.genSaltSync(10)
+router.post('/signup', function(req, res) {
+  	if (validator.validate(req.body.email)) {
+    	var salt = bcrypt.genSaltSync(10)
 		req.body.password = bcrypt.hashSync(req.body.password, salt);
-		user.findAll({email: req.body.email}).exec((err,checkUser) => {
-			if (checkUser.length === 0) {
+		User.findOne({email: req.body.email}).exec((e,checkUser) => {
+			if (!checkUser) {
 				var newUser = {
 					email: req.body.email,
 					password: req.body.password,
 					isActive: false
-        };
-        const user  = new User(newUser);
-        user.save((user) => {
-					const token = jwt.sign({ data: `${user.email}` }, 'thisisascret', { expiresIn: 60 * 3 });
-					res.status(200).json({id: user.id });
-					var verificationMail = {
-						email: user.email,
-						id: token
-					};
-					sendVerificationEmail(verificationMail, req, res);
-				}).catch(err => {
+       		};
+			const user  = new User(newUser);
+			user.save((err,user) => {
+				if(err)
+				{
 					console.log(err);
-					res.status(500).json({ message: err });
-				});
-			}
+					return res.status(500).json({ message: err });
+				}
+				const token = jwt.sign({ data: `${user.email}` }, 'thisisascret', { expiresIn: 60 * 3 });
+				res.status(200).json({id: user.id });
+				var verificationMail = {
+					email: user.email,
+					id: token
+				};
+				sendVerificationEmail(verificationMail, req, res);
+			})}
 			else {
 				res.status(400).json({ message: "Email already exists" });
 			}

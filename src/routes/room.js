@@ -52,20 +52,25 @@ router.put('/members',(req, res) => {
   }) 
 })
 
-//Configurate fee cost
-router.put('/feecost',(req, res) => {
+//Configurate room
+router.put('/config',(req, res) => {
   console.log(req.body)
+  Room.findOneAndUpdate({_id:req.body.roomId},req.body).exec((e,data)=>{
+    if(e)
+      res.status(500).send({
+          messase: 'error',
+          data: e
+      })
+  }) 
   Rule.findOneAndUpdate({roomId:req.body.roomId},req.body).exec((e,data)=>{
     if(e)
       res.status(500).send({
           messase: 'error',
           data: e
       })
-    else
-      res.send({
-          messase: 'configurate success',
-      })
   }) 
+  res.send({
+  messase: 'configurate success'});
 })
 
 //Find all room of an owner base on owner _id

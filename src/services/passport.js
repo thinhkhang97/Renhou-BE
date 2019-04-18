@@ -1,4 +1,4 @@
-var LocalStrategy = require('passport-local').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcrypt-nodejs')
 const JWTStrategy = require('passport-jwt').Strategy;
@@ -19,18 +19,15 @@ module.exports = (passport)=>{
         passwordField: 'password',
         session: false,
       },
-        function (email, password, done) {
-            User.findOne({
-                email:email
-            }).exec((e,user)=>{
+        (email, password, done) => {
+            User.findOne({email:email}).exec((e,user)=>{
+            console.log(e)
             const token = jwt.sign({data:`${user.email}`}, 'secret', { expiresIn: 60 * 60 *24 *30 });
-            if (!user || !bcrypt.compareSync(password,user.password)) {
+            if (e || !user || !bcrypt.compareSync(password,user.password)) {
               return done(null, false, { message: 'Error' });
             }
             return done(null, token);
-          }).catch(err=>{
-            return done(null, false, { message: 'Error' });
-          });
+            })
         }
       ));   
       passport.use(new JWTStrategy({
