@@ -15,37 +15,27 @@ module.exports = (passport)=>{
         done(null, User);
     });
     passport.use(new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-        session: false,
+      usernameField: 'email', 
+      passwordField: 'password',
+      session: false
       },
         function (email, password, done) {
-            User.findOne({
-                email:email
-            }).exec((e,user)=>{
-            const token = jwt.sign({data:`${user.email}`}, 'secret', { expiresIn: 60 * 60 *24 *30 });
-            if (!user || !bcrypt.compareSync(password,user.password)) {
-              return done(null, false, { message: 'Error' });
+            User.findOne({email:email}).exec((e,user)=>{
+            if (e) {
+              return done(e);
             }
-            return done(null, token);
-          }).catch(err=>{
-            return done(null, false, { message: 'Error' });
-          });
+            if (!user) {
+              return done(null, false, {message :'Wrong email'});
+            }
+            if (!user.isActive) {
+              return done(null, false, {message :'Email have not been verified'});
+            }
+            const token = jwt.sign({data:`${user.email}`}, 'thisisascret', { expiresIn: 60 * 60 *24 *30 });
+            if (!user || !bcrypt.compareSync(password,user.password)) {
+              return done(null, false, {message :'Wrong password'});
+            }
+            return done(null, {userID:user._id,token:token});
+          })
         }
-      ));   
-      passport.use(new JWTStrategy({
-        jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey   : 'secret'
-      },
-      function (jwtPayload, cb) {
-        user.findOne({
-          email:jwtPayload.data,
-        }).exec((e,user) => {
-                return cb(null, user);
-            })
-            .catch(err => {
-                return cb(err);
-            });
-      }
-      )); 
+      ));
 }
