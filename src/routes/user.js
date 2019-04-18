@@ -60,6 +60,31 @@ router.post('/signin', function(req, res,next) {
 		
 });
 
+
+//Verify again
+router.post('/reverify',function(req, res) {
+	if (validator.validate(req.body.email)) {
+	  User.findOne({email: req.body.email}).exec((e,checkUser) => {
+		    if (!checkUser) {
+			  return res.status(400).json({ message: "Email have not signed up" });
+			}
+			if (checkUser.isActive) {
+				return res.status(400).json({ message: "Email have verify yet" });
+			}
+			const token = jwt.sign({ data: `${checkUser.email}` }, 'thisisascret', { expiresIn: 60 * 3 });
+			res.status(200).json({id: checkUser.id });
+			var verificationMail = {
+				email: checkUser.email,
+				id: token
+			};
+			sendVerificationEmail(verificationMail, req, res);
+		  })
+  	}
+  	else {
+	  res.status(401).json({ message: "Invalid email" });
+  	}
+})
+
 //Sign up
 router.post('/signup', function(req, res) {
   	if (validator.validate(req.body.email)) {
