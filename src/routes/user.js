@@ -66,10 +66,10 @@ router.post('/reverify',function(req, res) {
 	if (validator.validate(req.body.email)) {
 	  User.findOne({email: req.body.email}).exec((e,checkUser) => {
 		    if (!checkUser) {
-			  return res.status(400).json({ message: "Email have not signed up" });
+			  return res.status(400).json({ code: 1, message: "Email have not signed up" });
 			}
 			if (checkUser.isActive) {
-				return res.status(400).json({ message: "Email have verify yet" });
+				return res.status(400).json({ code: 2,message: "Email have verify yet" });
 			}
 			const token = jwt.sign({ data: `${checkUser.email}` }, 'thisisascret', { expiresIn: 60 * 3 });
 			res.status(200).json({id: checkUser.id });
@@ -81,7 +81,7 @@ router.post('/reverify',function(req, res) {
 		  })
   	}
   	else {
-	  res.status(401).json({ message: "Invalid email" });
+	  res.status(400).json({ code: 1, message: "Invalid email" });
   	}
 })
 
@@ -113,12 +113,12 @@ router.post('/signup', function(req, res) {
 				sendVerificationEmail(verificationMail, req, res);
 			})}
 			else {
-				res.status(400).json({ message: "Email already exists" });
+				res.status(400).json({code:1, message: "Email already exists" });
 			}
 		})
 	}
 	else {
-		res.status(401).json({ message: "Invalid email" });
+		res.status(401).json({code:1, message: "Invalid email" });
 	}
 });
 module.exports = router;

@@ -25,14 +25,14 @@ module.exports = (passport)=>{
               return done(e);
             }
             if (!user) {
-              return done(null, false, {message :'Wrong email'});
+              return done(null, false, {code: 1,message :'Wrong email'});
             }
             if (!user.isActive) {
-              return done(null, false, {message :'Email have not been verified'});
+              return done(null, false, {code: 2, message :'Email have not been verified'});
             }
             const token = jwt.sign({data:`${user.email}`}, 'thisisascret', { expiresIn: 60 * 60 *24 *30 });
             if (!user || !bcrypt.compareSync(password,user.password)) {
-              return done(null, false, {message :'Wrong password'});
+              return done(null, false, {code: 3, message :'Wrong password'});
             }
             return done(null, {userID:user._id,token:token});
           })
