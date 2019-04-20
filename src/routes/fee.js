@@ -23,10 +23,10 @@ router.get('/', function(req, res, next) {
   }) 
 });
 
-const feeElectricModel = require('../models/feeElectricModel');
-const feeWaterModel = require('../models/feeWaterModel');
 const totalBillModel = require('../models/totalBillModel');
 const itemHouseModel = require('../models/itemHouseModel');
+const unitPriceModel = require('../models/unitPriceModel');
+const roomCostModel = require('../models/roomCost');
 
 const MONEY_ELECTRIC = 3000;
 const MONEY_WATER = 16000;
@@ -46,64 +46,135 @@ router.get('/fee', function(req, res, next) {
     var waterNo = req.body.waterNo;
     var idRoom = req.body.idRoom;
     var listItem = req.body.listItem;
-    // var currentMonth = 3;
-    // var currentYear = "2019";
-    // var electricNo = 135;
-    // var waterNo = 10;
-    // var idRoom = "P01";
-    // var listItem = ['MAY_LANH','CUA_SO'];
+    var idUser = req.body.idUser;
 
-    var totalElectric, totalWater, totalItemMoney;
+    var totalElectric, totalWater;
+    var totalMoneyElectric, totalMoneyWater, totalItemMoney;
     var totalMoney = 0;
     var beforeMonth = currentMonth - 1;
 
-    feeElectricModel.findOne({idRoom : idRoom,year: currentYear, month: beforeMonth.toString()}).exec(function (err, resultElectric) {
-        if (err) console.log(err);
-        totalElectric = electricNo - parseInt(resultElectric.electricNo);
+    totalBillModel.findOne({
+        idRoom: idRoom,
+        year: currentYear,
+        month: beforeMonth.toString()
+    }).exec(function (err, totalBillBefore) {
+        if(err) res.status(500).send({message: 'error',data: e});
+        if (totalBillBefore == null || totalBillBefore == {}) {
+            res.send({message : "No data", status : 1});
+        } else {
+            totalElectric = electricNo - parseInt(totalBillBefore.electricNo);
+            totalWater = waterNo - parseInt(totalBillBefore.waterNo);
 
-        feeWaterModel.findOne({idRoom: idRoom, year: currentYear, month: beforeMonth.toString()}).exec(function (err, resultWater) {
-            if (err) console.log(err);
-            totalWater = waterNo - parseInt(resultWater.waterNo);
+            unitPriceModel.findOne({idRoom: idRoom, idUser: idUser}).exec(function (err, unitPrice) {
+                if(err) res.status(500).send({message: 'error',data: e});
+                if (unitPrice == null || unitPrice == {}) {
+                    res.send({message: "No data",status: 1});
+                } else {
+                    totalMoneyElectric = totalElectric * unitPrice.unitPriceElectric;
+                    totalMoneyWater = totalWater * unitPrice.unitPriceWater;
 
-            totalItemMoney = 0;
-            itemHouseModel.find({idRoom: idRoom}).exec(function (err, itemList) {
-                if (err) console.log(err);
-                listItem.forEach(item => {
-                    var itemMoney = itemList.filter(x => x.idItem.includes(item) == 1);
-                    console.log(itemMoney);
-                    totalItemMoney = totalItemMoney + parseInt(itemMoney[0].money);
-                });
+                    totalItemMoney = 0;
+                    itemHouseModel.find({idRoom: idRoom}).exec(function (err, itemList) {
+                        if(err) res.status(500).send({message: 'error',data: e});
+                        if (itemList == null || itemList.length == 0) {
+                            res.send({
+                                message : "Không có vật dụng",
+                                status: 1
+                            });
+                        } else {
+                            listItem.forEach(item => {
+                                var itemMoney = itemList.filter(x => x.idItem.includes(item) == 1);
 
-                console.log(totalItemMoney.toString() + "," + totalWater.toString() + "," + totalElectric.toString());
+                                totalItemMoney = totalItemMoney + parseInt(itemMoney[0].money);
+                            });
 
-                totalMoney = totalElectric*MONEY_ELECTRIC + totalWater*MONEY_WATER + totalItemMoney;
-                console.log(totalMoney);
+                            console.log(totalItemMoney.toString() + "," + totalMoneyWater.toString() + "," + totalMoneyElectric.toString());
+                            totalMoney = totalMoneyWater + totalMoneyElectric + totalItemMoney;
 
-                const totalBill = new totalBillModel({
-                   idRoom: idRoom,
-                   month: currentMonth,
-                   year: currentYear,
-                    totalElectric: totalElectric,
-                    totalWater: totalWater,
-                    itemMoney: totalItemMoney,
-                    totalMoney: totalMoney
-                });
-                
-                totalBill.save(function(err){
-                    if(err) console.log(err);
-                    
-                    res.send(totalBill);
-                });
+                            const totalBill = new totalBillModel({
+                                idRoom: idRoom,
+                                month: currentMonth.toString(),
+                                year: currentYear.toString(),
+                                electricNo: totalElectric,
+                                waterNo: totalWater,
+                                totalMoneyElectric: totalMoneyElectric,
+                                totalMoneyWater: totalMoneyWater,
+                                itemMoneyItem: totalItemMoney,
+                                totalMoney: totalMoney
+                            });
 
-                // res.send(totalMoney.toString());
+                            totalBill.save(function (err) {
+                                if(err) res.status(500).send({
+                                    message: 'error',
+                                    data: err
+                                });
+                                res.send({
+                                    message: 'This bill is saved in month',
+                                    data: totalBill,
+                                    status: 0
+                                });
+                            });
+                        }
+                    });
+                }
             });
-        });
+        }
     });
 });
 
-//Hóa đơn tiền điện
-router.get('/feeElectric', function (req, res, next) {
-    res.send('DETAIL FEE API');
-  });
+router.get('/showFeeList',function(req,res,next){
+    var idRoom = req.body.idRoom;
+    totalBillModel.find({idRoom: idRoom}).exec(function(err,totalBillList){
+        if(err) res.status(500).send({message: 'error',data: e});
+        res.send({data: totalBillList});
+    })
+});
+
+//Hóa đơn từng tháng
+router.get('/feeDetail', function (req, res, next) {
+
+    var idRoom = req.body.idRoom;
+    var month = req.body.month;
+    var year = req.body.year;
+    var beforeMonth;
+    if(1 == month){
+        beforeMonth = 12;
+    }else{
+        beforeMonth = month - 1;
+    }
+    totalBillModel.findOne({idRoom: idRoom,month: month.toString(),year: year}).exec(function(err,feeDetailCurrent){
+        if(err) res.status(500).send({message: 'error',data:err});
+        totalBillModel.findOne({idRoom : idRoom,month:beforeMonth.toString(),year:year}).exec(function(err,feeDetailBefore){
+            if(err) res.status(500).send({message:'error',data:err});
+            roomCostModel.findOne({idRoom: idRoom}).exec(function(err,roomCost){
+                if(err) res.status(500).send({message: 'error',data: err});
+                var electricOldNo = feeDetailCurrent.electricNo;
+                console.log(electricOldNo);
+                const feeDetail = {
+                    "idRoom" : idRoom,
+                    "time" : month + "/" + year,
+                    "electricOldNo" : electricOldNo,
+                    "electricNewNo" : feeDetailCurrent.electricNo,
+                    "electricCost" : roomCost.electricCost,
+                    "totalMoneyElectric" : feeDetailCurrent.totalMoneyElectric,
+                    "waterOldNo" : feeDetailBefore.waterNo,
+                    "waterNewNo" : feeDetailCurrent.waterNo,
+                    "waterCost" : roomCost.waterCost,
+                    "totalMoneyWater" : feeDetailCurrent.totalMoneyWater,
+                    "roomCost" : roomCost.roomCost,
+                    "totalMoneyItem" : feeDetailCurrent.itemMoneyItem,
+                    "totalMoney" : feeDetailCurrent.totalMoney,
+                    "status" : feeDetailCurrent.status
+                };
+                res.send({
+                    message: 'Get fee detail successfully',
+                    data: feeDetail
+                });
+            })
+        })
+    })
+});
+
+
 
 module.exports = router;
