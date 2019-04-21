@@ -10,6 +10,7 @@
 			"description": "",
 			"order": [
 				"ca3641d4-0c82-21be-9476-3cbbc6e8fdd9",
+				"60799965-082d-986f-fa0d-7455d447f305",
 				"5ee3b65a-aa6d-2e39-f0c3-d30b0ac6e551",
 				"ad25fd92-a3ae-67a6-6e73-7c03158fc568",
 				"19562b80-7742-7a33-000a-db5d93c15c32",
@@ -25,7 +26,6 @@
 			"description": "",
 			"order": [
 				"411401ca-3a97-ca64-d183-fae38d8654f3",
-				"60799965-082d-986f-fa0d-7455d447f305",
 				"09648b64-a470-6df2-c45b-c36069a358f0",
 				"4f4f6113-9d33-96a7-76dd-8e82d5b369ec",
 				"7a0dd628-4fe8-9142-4a66-2883db2fd8f6",
@@ -41,6 +41,7 @@
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
 			"order": [
 				"e86564bf-1814-6708-85ca-1617fbb1fb18",
+				"13a92bc4-887d-6ba9-d72d-87c634b97862",
 				"c2f783ce-0da3-86c5-40d0-3d6d85deb9e4"
 			],
 			"owner": "1480489",
@@ -59,16 +60,22 @@
 	"requests": [
 		{
 			"id": "09648b64-a470-6df2-c45b-c36069a358f0",
-			"headers": "owner: 5ca46e712c76681518568bc4\n",
+			"headers": "owner: 5ca46e712c76681518568bc4\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NTc0NTExLCJleHAiOjE1NTgxNjY1MTF9.gRH8Pa_2r_OO-3Pqrpx0u0dYKKvSzHgw4IKVs7bKV70\n",
 			"headerData": [
 				{
 					"key": "owner",
 					"value": "5ca46e712c76681518568bc4",
 					"description": "",
 					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NTc0NTExLCJleHAiOjE1NTgxNjY1MTF9.gRH8Pa_2r_OO-3Pqrpx0u0dYKKvSzHgw4IKVs7bKV70",
+					"description": "",
+					"enabled": true
 				}
 			],
-			"url": "localhost:3000/room/all/5ca46e712c76681518568bc4",
+			"url": "localhost:3000/room/all/5cb7f1498c71302068eadc82",
 			"folder": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -80,17 +87,54 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1554392924619,
+			"time": 1555821243242,
 			"name": "get all room",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
 			"responses": []
 		},
 		{
+			"id": "13a92bc4-887d-6ba9-d72d-87c634b97862",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/user/reverify",
+			"folder": "61d7a283-de32-2f98-0e18-80eb3f37b26b",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1555597536014,
+			"name": "localhost:3000/user/reverify",
+			"description": "sign up",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": [],
+			"rawModeData": "{\n\t\"email\":\"tienandehit1@gmail.com\",\n\t\"password\":\"123456\"\n}"
+		},
+		{
 			"id": "19562b80-7742-7a33-000a-db5d93c15c32",
-			"headers": "",
-			"headerData": [],
-			"url": "localhost:3000/member/get/all/5ca46e712c76681518568bc4",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/member/get/all/5cb7f1498c71302068eadc82",
 			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -102,7 +146,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1554397310106,
+			"time": 1555823675217,
 			"name": "get all member",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
@@ -110,11 +154,17 @@
 		},
 		{
 			"id": "411401ca-3a97-ca64-d183-fae38d8654f3",
-			"headers": "Content-Type: application/json\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
 					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
 					"description": "",
 					"enabled": true
 				}
@@ -131,20 +181,35 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1554395853580,
+			"time": 1555821005090,
 			"name": "add new room",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
 			"responses": [],
-			"rawModeData": "{\n\t\"userId\":\"5ca46e712c76681518568bc4\",\n\t\"name\":\"Room 1\",\n\t\"address\":\"Tân phú\",\n\t\"membersIdNumber\":[],\n\t\"roomCost\":\"1000000\",\n    \"perElectricCost\":\"4000\",\n    \"perWaterCost\":\"10000\"\n}"
+			"rawModeData": "{\n\t\"userId\":\"5cb7f1498c71302068eadc82\",\n\t\"name\":\"Room 11\",\n\t\"address\":\"Tân phú\",\n\t\"membersIdNumber\":[],\n\t\"roomCost\":\"1000000\",\n    \"perElectricCost\":\"4000\",\n    \"perWaterCost\":\"10000\"\n}"
 		},
 		{
 			"id": "4f4f6113-9d33-96a7-76dd-8e82d5b369ec",
-			"headers": "",
-			"headerData": [],
-			"url": "localhost:3000/room/5ca634cfe2001633446546ee",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/room/5cbbefeb6c58c82b0cb39664?userId=5cb7f1498c71302068eadc82",
 			"folder": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
-			"queryParams": [],
+			"queryParams": [
+				{
+					"key": "userId",
+					"value": "5cb7f1498c71302068eadc82",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
 			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
@@ -154,7 +219,7 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1554397313306,
+			"time": 1555821002958,
 			"name": "find room by id",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
@@ -162,47 +227,44 @@
 		},
 		{
 			"id": "5726c221-4f1e-158a-dc3f-61feff3b0a19",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/member/delete/5cbbff02713b153598f796a2?userId=5cb7f1498c71302068eadc82",
+			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
+			"queryParams": [
+				{
+					"key": "userId",
+					"value": "5cb7f1498c71302068eadc82",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1555825538026,
 			"name": "delete member",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
-			"method": "DELETE",
-			"headers": "",
-			"data": [],
-			"rawModeData": "",
-			"url": "localhost:3000/member/delete/5ca46e712c76681518568bc4",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [],
-			"collection_id": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
-			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2"
+			"responses": []
 		},
 		{
 			"id": "5ee3b65a-aa6d-2e39-f0c3-d30b0ac6e551",
-			"name": "update a member",
-			"description": "",
-			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
-			"method": "PUT",
-			"headers": "Content-Type: application/json",
-			"dataMode": "raw",
-			"data": [],
-			"rawModeData": "{\n\t\"name\":\"Chung 2\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}",
-			"url": "localhost:3000/member/update/5ca46e712c76681518568bc4",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json"
-				}
-			],
-			"collection_id": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
-			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2"
-		},
-		{
-			"id": "5f2f1818-fa16-1d86-63a7-128b3b3ef7cf",
-			"headers": "Content-Type: application/json\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
@@ -211,13 +273,49 @@
 					"enabled": true
 				},
 				{
-					"key": "",
-					"value": "",
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
 					"description": "",
-					"enabled": false
+					"enabled": true
 				}
 			],
-			"url": "localhost:3000/room/feecost",
+			"url": "localhost:3000/member/update/5ca63726163b6f05e043af2a",
+			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1555823303850,
+			"name": "update a member",
+			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": [],
+			"rawModeData": "{\n\t\"userId\":\"5cb7f1498c71302068eadc82\",\n\t\"name\":\"Chung 4\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}"
+		},
+		{
+			"id": "5f2f1818-fa16-1d86-63a7-128b3b3ef7cf",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
+					"description": "\n",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/room/config",
 			"folder": "8ffea3ae-cdca-082a-7ea3-d51f3011a22b",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -229,20 +327,26 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1554397317523,
-			"name": "configurate fee cost",
+			"time": 1555826014602,
+			"name": "configurate room",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
 			"responses": [],
-			"rawModeData": "{\n\t\"roomId\":\"5ca634cfe2001633446546ee\",\n\t\"roomCost\":\"500000\",\n    \"perElectricCost\":\"3000\",\n    \"perWaterCost\":\"15000\"\n}"
+			"rawModeData": "{\n\t\"userId\":\"5cb7f1498c71302068eadc82\",\n\t\"roomId\":\"5cbbe652df076d0270b909fb\",\n\t\"roomCost\":\"500000\",\n    \"perElectricCost\":\"3000\",\n    \"perWaterCost\":\"15000\"\n}"
 		},
 		{
 			"id": "60799965-082d-986f-fa0d-7455d447f305",
-			"headers": "Content-Type: application/json\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
 					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
 					"description": "",
 					"enabled": true
 				}
@@ -259,20 +363,26 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1554397313826,
+			"time": 1555825828756,
 			"name": "get the members in a room",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
 			"responses": [],
-			"rawModeData": "{\n\t\"listMembersId\":[\"5ca63726163b6f05e043af2a\", \"5ca45f45d21dea37d86919cb\"]\n}"
+			"rawModeData": "{\n\t\"userId\":\"5cb7f1498c71302068eadc82\",\n\t\"listMembersId\":[\"5cbbff02713b153598f796a2\", \"5ca45f45d21dea37d86919cb\"]\n}"
 		},
 		{
 			"id": "7a0dd628-4fe8-9142-4a66-2883db2fd8f6",
-			"headers": "Content-Type: application/json\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
 					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
 					"description": "",
 					"enabled": true
 				}
@@ -289,29 +399,49 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1554396543045,
+			"time": 1555820953850,
 			"name": "configure member list in a room",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
 			"responses": [],
-			"rawModeData": "{\n\t\"roomId\":\"5ca63423f3a2ca1a786ac336\",\n\t\"listMember\":[\n\t\t\"5ca634f2e2001633446546f0\",\n        \"5ca634f7e2001633446546f1\"]\n}"
+			"rawModeData": "{\n\t\"userId\":\"5cb7f1498c71302068eadc82\",\n\t\"roomId\":\"5cbbe652df076d0270b909fb\",\n\t\"listMember\":[\n\t\t\"5ca634f2e2001633446546f0\",\n        \"5ca634f7e2001633446546f1\"]\n}"
 		},
 		{
 			"id": "ad25fd92-a3ae-67a6-6e73-7c03158fc568",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/member/get/5cbbff02713b153598f796a2?userId=5cb7f1498c71302068eadc82",
+			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
+			"queryParams": [
+				{
+					"key": "userId",
+					"value": "5cb7f1498c71302068eadc82",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1555825119545,
 			"name": "get a member",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
-			"method": "GET",
-			"headers": "",
-			"data": [],
-			"rawModeData": "",
-			"url": "localhost:3000/member/get/5ca46e712c76681518568bc4",
-			"responses": [],
-			"pathVariableData": [],
-			"queryParams": [],
-			"headerData": [],
-			"collection_id": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
-			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2"
+			"responses": []
 		},
 		{
 			"id": "c2f783ce-0da3-86c5-40d0-3d6d85deb9e4",
@@ -325,6 +455,7 @@
 				}
 			],
 			"url": "localhost:3000/user/signin",
+			"folder": "61d7a283-de32-2f98-0e18-80eb3f37b26b",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -344,16 +475,22 @@
 		},
 		{
 			"id": "ca3641d4-0c82-21be-9476-3cbbc6e8fdd9",
-			"headers": "Content-Type: application/json\n",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
 			"headerData": [
 				{
 					"key": "Content-Type",
 					"value": "application/json",
 					"description": "",
 					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
+					"description": "",
+					"enabled": true
 				}
 			],
-			"url": "localhost:3000/member/create/5ca6370d163b6f05e043af28",
+			"url": "localhost:3000/member/create/5cbbe652df076d0270b909fb",
 			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
 			"queryParams": [],
 			"preRequestScript": null,
@@ -365,12 +502,12 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1554397315727,
+			"time": 1555823344352,
 			"name": "add a member",
 			"description": "",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
 			"responses": [],
-			"rawModeData": "{\n\t\"name\":\"Chung 1\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}"
+			"rawModeData": "{\n\t\"userId\":\"5cb7f1498c71302068eadc82\",\n\t\"name\":\"Chung 1\",\n\t\"idCard\":\"121212\",\n\t\"phone\":\"0123456\",\n\t\"dob\":\"1997-01-28\",\n\t\"email\":\"chung@gmail.com\",\n\t\"delFlag\": 0\n}"
 		},
 		{
 			"id": "e86564bf-1814-6708-85ca-1617fbb1fb18",
