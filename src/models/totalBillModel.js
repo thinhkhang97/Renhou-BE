@@ -6,28 +6,37 @@ const totalBillSchema = new Schema ({
 
     idRoom: {
         type: String,
-        required: false
+        require: false
     },
     year: {
         type: String,
-        required: false
+        require: false
     },
     month: {
         type: String,
-        required: false
+        require: false
     },
-    totalElectric: {
+    electricNo: {
         type: Number,
     },
-    totalWater: {
+    waterNo: {
+        type: Number,
+    },
+    totalMoneyElectric:{
+        type: Number,
+    },
+    totalMoneyWater: {
         type: Number,
     },
     // Tổng tiền vật dụng hư trong nhà
-    itemMoney: {
+    itemMoneyItem: {
         type: Number,
     },
     totalMoney: {
         type: Number,
+    },
+    status: {
+        type: Number
     }
 },{collection: 'Total_Bill'});
 
