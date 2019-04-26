@@ -2,6 +2,19 @@
 Renhou-BE is backend of Renhou mobile application.
 This is a update.
 
+# Use APIs
+## Các request có phần body thì trong body phải có trường userId
+## Các request không có body như GET thì trên URI thì:
+- userId đã được truyền như param rồi thì khỏi thêm gì hết, ví dụ 
+> userId là 5cb7f1498c71302068eadc82
+```sh
+localhost:3000/room/all/5cb7f1498c71302068eadc82
+```
+- nếu chưa có thì phải truyền vào dưới dạng tham số querry, ví dụ
+> userId là 5cb7f1498c71302068eadc82
+```sh
+localhost:3000/room/5cbbefeb6c58c82b0cb39664?userId=5cb7f1498c71302068eadc82
+```
 # API LOGIN
 - Sau khi login thành công sẽ trả về userID và token.
 - Token này dùng ?? truyền vào header của request dưới dạng 
