@@ -4,6 +4,7 @@ const Schema = mongoose.Schema
  
 const MemberSchema = new Schema({
   userId: {type: Schema.Types.ObjectId, required: true},
+  roomId: {type: Schema.Types.ObjectId, required: true},
   name: String,
   idCard: String,
   phone: String,

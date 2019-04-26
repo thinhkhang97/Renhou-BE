@@ -21,6 +21,7 @@ router.post(
             return handleAccessDeny(res)
           }
           else{
+            req.body.roomId = req.params.idRoom;
             const memberDoc = new MemberModel(req.body);
             const member = await memberDoc.save();
             //add user to the room
@@ -82,6 +83,28 @@ router.get(
     }
   }
 )
+
+//get all members in a room id
+router.get(
+  '/get/room/:roomId',
+  async (req, res) => {
+    if(req.user._id != req.query.userId)
+      return handleAccessDeny(res)
+    else{
+      try {
+        await MemberModel.find({roomId: req.params.roomId, delFlag : false}, function(err, member){
+          if(err){
+            return res.status(404).send({ message: 'Not found!' })
+          }
+            return res.json({ member: member })
+        })
+      } catch (e) {
+        return handlePageError(res, e)
+      }
+    }
+  }
+)
+
 
 //get infor of a member
 router.get(

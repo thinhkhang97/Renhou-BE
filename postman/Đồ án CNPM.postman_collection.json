@@ -14,7 +14,8 @@
 				"5ee3b65a-aa6d-2e39-f0c3-d30b0ac6e551",
 				"ad25fd92-a3ae-67a6-6e73-7c03158fc568",
 				"19562b80-7742-7a33-000a-db5d93c15c32",
-				"5726c221-4f1e-158a-dc3f-61feff3b0a19"
+				"5726c221-4f1e-158a-dc3f-61feff3b0a19",
+				"1b69c1bb-d456-22c0-d9e8-6f400922ae68"
 			],
 			"folders_order": [],
 			"owner": "1480489",
@@ -146,9 +147,46 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1555823675217,
+			"time": 1556289136321,
 			"name": "get all member",
 			"description": "",
+			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
+			"responses": []
+		},
+		{
+			"id": "1b69c1bb-d456-22c0-d9e8-6f400922ae68",
+			"headers": "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk\n",
+			"headerData": [
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoidGllbmFuZGVoaXRAZ21haWwuY29tIiwiaWF0IjoxNTU1NzQ5MTMzLCJleHAiOjE1NTgzNDExMzN9.rzeFUtpE6Sv7Dx_QmDqCaf7nFbM6iBNNREL3xLRayfk",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "localhost:3000/member/get/room/5cbbe652df076d0270b909fb?userId=5cb7f1498c71302068eadc82",
+			"folder": "a5cf364d-43e9-45fd-ed55-d8929c26e2b2",
+			"queryParams": [
+				{
+					"key": "userId",
+					"value": "5cb7f1498c71302068eadc82",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1556289253256,
+			"name": "get all member in room id",
+			"description": "get all member in room",
 			"collectionId": "4da6b9e4-fb93-561b-4a0a-b7206cc7f1a1",
 			"responses": []
 		},
