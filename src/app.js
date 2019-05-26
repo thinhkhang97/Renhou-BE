@@ -39,7 +39,7 @@ app.use(function(req, res, next) {
 
 //Init database
 // make a connection
-mongoose.connect('mongodb://localhost:27017/Renhou',{ useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/Renhou',{ useNewUrlParser: true });
 
 //mongoose.connect('mongodb://default:manager1@ds159164.mlab.com:59164/renhou');
  
