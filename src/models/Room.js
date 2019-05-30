@@ -13,11 +13,6 @@ const RoomSchema = new Schema({
     membersIdNumber:[String],
     billsIdNumber:[String],
     furnituresIdNumber:[String]
-},{
-    timestamps: {
-        createdAt: 'created_at',
-        updatedAt: 'updated_at'
-    }
 })
 
 module.exports = mongoose.model('Room', RoomSchema)

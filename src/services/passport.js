@@ -30,7 +30,7 @@ module.exports = (passport)=>{
             if (!user.isActive) {
               return done(null, false, {code: 2, message :'Email have not been verified'});
             }
-            const token = jwt.sign({data:`${user.email}`}, process.env.SECRET_PASS, { expiresIn: 60 * 60 *24 *30 });
+            const token = jwt.sign({data:`${user.email}`}, 'thisisascret', { expiresIn: 60 * 60 *24 *30 });
             if (!user || !bcrypt.compareSync(password,user.password)) {
               return done(null, false, {code: 3, message :'Wrong password'});
             }
@@ -41,7 +41,7 @@ module.exports = (passport)=>{
 
     passport.use(new JWTStrategy({
         jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
-        secretOrKey   : process.env.SECRET_PASS
+        secretOrKey   : 'thisisascret'
       },
       function (jwtPayload, cb) {
         User.findOne({email:jwtPayload.data}).exec((err,user) => {

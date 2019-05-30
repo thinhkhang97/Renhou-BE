@@ -6,7 +6,7 @@ var smtpConfig = {
     secure: false, 
     auth: {
         user: "rent.house.server@gmail.com",
-        pass: process.env.PASS_EMAIL
+        pass: "19000091aabbcc!!"
     },
     tls: {
         rejectUnauthorized: false

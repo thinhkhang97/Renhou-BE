@@ -31,7 +31,7 @@ sendVerificationEmail = (verificationMail, req, res) => {
 //Verify signup
 router.get('/verify/:sign',function(req, res){
 	try {
-		const ids = jwt.verify(req.params.sign, process.env.SECRET_PASS);
+		const ids = jwt.verify(req.params.sign, 'thisisascret');
 		var email = ids.data;
 		User.findOneAndUpdate({email:email},{isActive: true}).exec((e,data)=>{
 			if(e)
@@ -71,7 +71,7 @@ router.post('/reverify',function(req, res) {
 			if (checkUser.isActive) {
 				return res.status(400).json({ code: 2,message: "Email have verify yet" });
 			}
-			const token = jwt.sign({ data: `${checkUser.email}` }, process.env.SECRET_PASS, { expiresIn: 60 * 3 });
+			const token = jwt.sign({ data: `${checkUser.email}` }, 'thisisascret', { expiresIn: 60 * 3 });
 			res.status(200).json({id: checkUser.id });
 			var verificationMail = {
 				email: checkUser.email,
@@ -104,7 +104,7 @@ router.post('/signup', function(req, res) {
 					console.log(err);
 					return res.status(500).json({ message: err });
 				}
-				const token = jwt.sign({ data: `${user.email}` }, process.env.SECRET_PASS, { expiresIn: 60 * 3 });
+				const token = jwt.sign({ data: `${user.email}` }, 'thisisascret', { expiresIn: 60 * 3 });
 				res.status(200).json({id: user.id });
 				var verificationMail = {
 					email: user.email,

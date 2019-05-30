@@ -10,6 +10,7 @@ var userRouter = require('./routes/user');
 var feeRouter = require('./routes/fee');
 var membersRouter = require('./routes/members');
 var roomRouter = require('./routes/room')
+
 var app = express();
 
 // view engine setup
@@ -29,7 +30,6 @@ app.use('/member',passport.authenticate('jwt', {session: false}), membersRouter)
 app.use('/room',passport.authenticate('jwt', {session: false}), roomRouter);
 app.use('/fee',passport.authenticate('jwt', {session: false}), feeRouter);
 
-require('dotenv').config();
 require('./services/passport')(passport);
 
 // catch 404 and forward to error handler
@@ -37,12 +37,9 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-console.log(process.env.PASS_EMAIL)
-console.log(process.env.SECRET_PASS)
-
 //Init database
 // make a connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/Renhou',{ useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/Renhou',{ useNewUrlParser: true });
 
 //mongoose.connect('mongodb://default:manager1@ds159164.mlab.com:59164/renhou');
  
