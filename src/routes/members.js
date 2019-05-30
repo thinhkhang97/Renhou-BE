@@ -27,7 +27,11 @@ router.post(
             //add user to the room
             const listUserInRoom = room.membersIdNumber;
             listUserInRoom.push(member._id);
-            await RoomModel.findOneAndUpdate( req.params.idRoom, {membersIdNumber: listUserInRoom,status:'used'});
+            await RoomModel.findOneAndUpdate({_id: req.params.idRoom}, {$set:{membersIdNumber: listUserInRoom, status:'used'}}, (err) => {
+              if (err) {
+                  console.log("Something wrong when updating data!");
+              }
+            })
             return res.send({
               message: 'Created new member successfully!',
               data: member
@@ -53,7 +57,7 @@ router.put(
           return handleAccessDeny(res)
         }
         else{
-          await MemberModel.findOneAndUpdate(req.params.id, req.body)
+          await MemberModel.findOneAndUpdate({_id:req.params.id}, req.body)
           return res.json({ message: 'Updated Member successfully!' })
         }
       } catch (e) {
@@ -146,7 +150,7 @@ router.delete(
           return handleAccessDeny(res)
         }
         else{
-          await MemberModel.findOneAndUpdate(req.params.id, {delFlag:true})
+          await MemberModel.findOneAndUpdate({_id:req.params.id}, {delFlag:true})
           return res.json({ message: 'Deleted Member successfully!' })
         } 
       } catch (e) {
